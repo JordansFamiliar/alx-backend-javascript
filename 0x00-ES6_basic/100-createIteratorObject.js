@@ -12,14 +12,15 @@ export default function createIteratorObject(report) {
       return {
         next() {
           if (x < employees.length) {
-            return { value: employees[x++], done: false };
+            const result = { value: employees[x], done: false };
+	    x += 1;
+	    return result;
           }
           return { value: undefined, done: true };
-        }
+        },
       };
     },
   };
 
   return iterable;
 }
-
